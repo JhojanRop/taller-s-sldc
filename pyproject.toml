@@ -1,6 +1,6 @@
 [project]
 name = "codigobasevulnerable"
-version = "0.2.0"
+version = "0.2.1"
 description = "Sistema de Gestion Academica intencionalmente vulnerable para laboratorio de S-SDLC (SQLi, XSS, IDOR, subida sin restriccion). USAR SOLO EN ENTORNO LOCAL AISLADO."
 requires-python = ">=3.10"
 dependencies = [
