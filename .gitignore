@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# SQLite lab
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploads del laboratorio (vuln intencionada)
+uploads/
+instance/
+
+# macOS / editores
+.DS_Store
+**/.DS_Store
+.vscode/
+.idea/
