@@ -1,0 +1,45 @@
+repos:
+  # 1. Higiene básica y prevención de errores comunes
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files # Previene subir archivos pesados o .db por accidente
+      - id: check-merge-conflict
+      - id: detect-private-key
+
+  # 2. Calidad y Formato: Ruff
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.10
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
+  # 3. Seguridad: Prevención de Fuga de Secretos (Shift-Left Security)
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: ^(uv\.lock|\.secrets\.baseline)$
+
+  # 4. Seguridad SAST: Análisis de vulnerabilidades en código Python
+  # NOTA lab: el código base es intencionalmente vulnerable (SQLi/XSS/IDOR),
+  # Bandit debe REPORTAR (bloquea el commit hasta revisar el hallazgo).
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.9.4
+    hooks:
+      - id: bandit
+        args: [-q, -r, app.py, database.py]
+        additional_dependencies: ['bandit[toml]']
+
+  # 5. Estandarización de Commits
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v9.13.0
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]
+        additional_dependencies: ['@commitlint/config-conventional']

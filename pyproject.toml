@@ -2,10 +2,30 @@
 name = "codigobasevulnerable"
 version = "0.1.0"
 description = "Sistema de Gestion Academica intencionalmente vulnerable para laboratorio de S-SDLC (SQLi, XSS, IDOR, subida sin restriccion). USAR SOLO EN ENTORNO LOCAL AISLADO."
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
     "flask>=3.1",
 ]
 
 [tool.uv]
 package = false
+
+[dependency-groups]
+dev = [
+    "bandit[toml]>=1.9.4",
+    "detect-secrets>=1.5.0",
+    "pre-commit>=4.3.0",
+    "ruff>=0.15.10",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+extend-exclude = [".venv/", "__pycache__/", "uploads/"]
+
+[tool.ruff.lint]
+select = ["E", "F", "B", "I"]
+
+[tool.bandit]
+exclude_dirs = [".venv", "__pycache__"]
+skips = []

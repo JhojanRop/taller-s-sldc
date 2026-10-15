@@ -1,20 +1,70 @@
-# Python
+# Python: bytecode, build y packaging
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
+build/
+dist/
 *.egg-info/
-.venv/
+*.egg
+.eggs/
+wheels/
 
-# SQLite lab
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Secretos y configuracion local
+.env
+.env.*
+!.env.example
+.envrc
+*.pem
+*.key
+*.p12
+secrets.json
+
+# Flask
+instance/
+.webassets-cache
+
+# Logs
+*.log
+logs/
+
+# Bases de datos locales
 *.db
 *.sqlite
 *.sqlite3
+*.sqlite3-journal
 
-# Uploads del laboratorio (vuln intencionada)
+# Archivos subidos por la app
 uploads/
-instance/
+media/
+
+# Tests, cobertura y calidad
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+
+# UV
+.uv/
 
 # macOS / editores
 .DS_Store
 **/.DS_Store
 .vscode/
 .idea/
+*.swp
+*~
